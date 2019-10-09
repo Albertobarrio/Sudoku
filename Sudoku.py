@@ -42,15 +42,14 @@ class Sudoku():
             lineal_position += 1
         return column
 
-
     def number_in_region(self, position_x, position_y):
         region = []
         reg_x_init = position_x // 3
         reg_y_init = position_y // 3
         for i in range(3):
             for j in range(3):
-                pos = i*9  +  j + reg_x_init * 3 * 9 + reg_y_init * 3
-                region.append(self.original_board[ pos ]) 
+                pos = i*9 + j + reg_x_init * 3 * 9 + reg_y_init * 3
+                region.append(self.original_board[pos])
         return region
 
     def put_number(self, position_x, position_y, number):
@@ -61,7 +60,11 @@ class Sudoku():
             raise InvalidColumn()
         elif str(number) in self.number_in_row(lineal_position):
             raise InvalidRow()
-        elif str(number) in self.number_in_region(position_x,position_y):
+        elif str(number) in self.number_in_region(position_x, position_y):
             raise InvalidRegion()
         else:
-            assert(True)
+            self.original_board[lineal_position] = number
+            return True
+
+    def is_over(self):
+        return 'x' not in self.original_board
