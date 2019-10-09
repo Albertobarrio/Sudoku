@@ -5,6 +5,7 @@ from Sudoku import (
     InvalidPosition,
     InvalidColumn,
     InvalidRow,
+    InvalidBlock,
 )
 
 
