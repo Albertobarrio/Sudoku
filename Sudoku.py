@@ -10,7 +10,7 @@ class InvalidRow(Exception):
     pass
 
 
-class InvalidBlock(Exception):
+class InvalidRegion(Exception):
     pass
 
 
@@ -37,12 +37,21 @@ class Sudoku():
     def number_in_row(self, lineal_position):
         column = []
         lineal_position = (lineal_position // 9)*9
-        for iterator in range(9):
+        for i in range(9):
             column.append(self.original_board[lineal_position])
             lineal_position += 1
         return column
 
-    def number_in_block(self):
+
+    def number_in_region(self, position_x, position_y):
+        region = []
+        reg_x_init = position_x // 3
+        reg_y_init = position_y // 3
+        for i in range(3):
+            for j in range(3):
+                pos = i*9  +  j + reg_x_init * 3 * 9 + reg_y_init * 3
+                region.append(self.original_board[ pos ]) 
+        return region
 
     def put_number(self, position_x, position_y, number):
         lineal_position = (position_x * 9) + position_y
@@ -52,3 +61,7 @@ class Sudoku():
             raise InvalidColumn()
         elif str(number) in self.number_in_row(lineal_position):
             raise InvalidRow()
+        elif str(number) in self.number_in_region(position_x,position_y):
+            raise InvalidRegion()
+        else:
+            assert(True)
