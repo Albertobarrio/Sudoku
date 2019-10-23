@@ -1,19 +1,20 @@
 import unittest
 
-from Interface import
+from Interface import Interface
 
 
 class TestSudoku(unittest.TestCase):
 
-    def test_input_small_number():
+    def test_input_small_number(self):
         pass
 
-    def test_input_big_number():
+    def test_input_big_number(self):
         pass
 
-    def test_input_letter():
+    def test_input_letter(slef):
         pass
     
+
     
 
 
