@@ -64,5 +64,13 @@ class TestSudoku(unittest.TestCase):
         over = sudoku.is_over()
         self.assertFalse(over)
 
+    def test_board(self):
+        sudoku = Sudoku( "53xx7xxxx6xx195xxxx98xxxx6x8xxx6xxx34xx8x3xx17xxx2xxx6x6xxxx28xxxx419xx5xxxx8xx79")
+        sudoku.print_board()
+        sudoku.put_number(0, 2, 4)
+        sudoku.put_number(0, 3, 6)
+        sudoku.put_number(0, 5, 8)
+        sudoku.print_board()
+        
 if __name__ == '__main__':
     unittest.main()

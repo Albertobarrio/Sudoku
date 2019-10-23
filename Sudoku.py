@@ -37,7 +37,7 @@ class Sudoku():
     def number_in_row(self, lineal_position):
         column = []
         lineal_position = (lineal_position // 9)*9
-        for i in range(9):
+        for _ in range(9):
             column.append(self.original_board[lineal_position])
             lineal_position += 1
         return column
@@ -63,8 +63,15 @@ class Sudoku():
         elif str(number) in self.number_in_region(position_x, position_y):
             raise InvalidRegion()
         else:
-            self.original_board[lineal_position] = number
+            self.original_board[lineal_position] = str(number)
             return True
-
+        
+    def print_board(self):
+        board=""
+        for i in range(0,9):
+            for j in range(0,9):
+                board += self.original_board[(i*9)+j] + " "
+            board+="\n"
+        print(board)
     def is_over(self):
         return 'x' not in self.original_board
