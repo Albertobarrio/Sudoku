@@ -17,25 +17,19 @@ class Interface():
         self.sudoku = Sudoku("534678912672195348198342567859761423426853791713924856961537284287419635345286x79")
     
     def validate_input_number(self, number):
-        try:
-            if number >= 10 or number <= 0:
-                raise IncorrectNumber
-            elif not int:
-                raise NotNumber
-            else:
-                return True
-        except IncorrectNumber:
-            print("Ha ingresado incorrecto, debe ingresar un numero entre 1 y 9")
-            return False
-        except NotNumber:
-            print("Ha ingresado una letra")
-            return False
-            
+        
+        if int(number) >= 10 or int(number) <= 0:
+            raise IncorrectNumber()
+        elif not int: 
+            raise NotNumber()
+        else:
+            return True
+
     def play_sudoku(self):
         print(self.sudoku.print_board())
         try:
             while not self.sudoku.is_over():
-                self.number = int(input("Ingrese un numero: "))
+                self.number = input("Ingrese un numero: ")
                 self.position_x = int(input("Ingrese la posicion x: "))
                 self.position_y = int(input("Ingrese la posicion y: "))
                 if self.validate_input_number(self.number):
@@ -57,6 +51,15 @@ class Interface():
         except InvalidRegion:
             print("El numero ya esta en la region")
             self.play_sudoku()
+        
+        except IncorrectNumber:
+            print("Ha ingresado incorrecto, debe ingresar un numero entre 1 y 9")
+            self.play_sudoku()
+        
+        except NotNumber:
+            print("Ha ingresado una letra")
+            self.play_sudoku()
+            
 
 Interface().play_sudoku()
             

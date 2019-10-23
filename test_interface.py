@@ -9,15 +9,13 @@ from Interface import (
 
 class TestSudoku(unittest.TestCase):
 
-    #def setUp(self):
-    #   self.interface = Interface()
+    def setUp(self):
+       self.interface = Interface()
 
     def test_valid_number(self):
-        self.interface = Interface()
-        self.interface.validate_input_number(5)
+        self.assertTrue(self.interface.validate_input_number(5))
     
     def test_input_small_number(self):
-        self.interface = Interface()
         with self.assertRaises(IncorrectNumber):
             self.interface.validate_input_number(0)
     """
