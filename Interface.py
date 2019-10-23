@@ -6,10 +6,10 @@ from Sudoku import (
     InvalidRegion,
 )
 
-class incorrectNumber(Exception):
+class IncorrectNumber(Exception):
     pass
 
-class notLetter(Exception):
+class NotNumber(Exception):
     pass
 
 class Interface():
@@ -19,24 +19,27 @@ class Interface():
     def validate_input_number(self, number):
         try:
             if number >= 10 or number <= 0:
-                raise incorrectNumber
-            if not int:
-                raise notLetter
-        except incorrectNumber:
+                raise IncorrectNumber
+            elif not int:
+                raise NotNumber
+            else:
+                return True
+        except IncorrectNumber:
             print("Ha ingresado incorrecto, debe ingresar un numero entre 1 y 9")
-            self.play_sudoku()
-        except notLetter:
+            return False
+        except NotNumber:
             print("Ha ingresado una letra")
-
+            return False
+            
     def play_sudoku(self):
         print(self.sudoku.print_board())
         try:
             while not self.sudoku.is_over():
                 self.number = int(input("Ingrese un numero: "))
-                self.validate_input_number(self.number)
                 self.position_x = int(input("Ingrese la posicion x: "))
                 self.position_y = int(input("Ingrese la posicion y: "))
-                self.sudoku.put_number(self.position_x,self.position_y,self.number)
+                if self.validate_input_number(self.number):
+                    self.sudoku.put_number(self.position_x,self.position_y,self.number)
                 print(self.sudoku.print_board())
         
         except InvalidPosition:
@@ -55,8 +58,5 @@ class Interface():
             print("El numero ya esta en la region")
             self.play_sudoku()
 
-
-
 Interface().play_sudoku()
-
             
