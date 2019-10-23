@@ -72,6 +72,7 @@ class Sudoku():
             for j in range(0,9):
                 board += self.original_board[(i*9)+j] + " "
             board+="\n"
-        print(board)
+        return board
+    
     def is_over(self):
         return 'x' not in self.original_board

@@ -62,15 +62,20 @@ class TestSudoku(unittest.TestCase):
     def test_no_win(self):
         sudoku = Sudoku( "53xx7xxxx6xx195xxxx98xxxx6x8xxx6xxx34xx8x3xx17xxx2xxx6x6xxxx28xxxx419xx5xxxx8xx79")
         over = sudoku.is_over()
-        self.assertFalse(over)
+        self.assertFalse(over)    
 
-    def test_board(self):
+    def test_print_board(self):
         sudoku = Sudoku( "53xx7xxxx6xx195xxxx98xxxx6x8xxx6xxx34xx8x3xx17xxx2xxx6x6xxxx28xxxx419xx5xxxx8xx79")
-        sudoku.print_board()
-        sudoku.put_number(0, 2, 4)
-        sudoku.put_number(0, 3, 6)
-        sudoku.put_number(0, 5, 8)
-        sudoku.print_board()
-        
+        self.assertEqual(sudoku.print_board(),"5 3 x x 7 x x x x \n" 
+                                              "6 x x 1 9 5 x x x \n" 
+                                              "x 9 8 x x x x 6 x \n" 
+                                              "8 x x x 6 x x x 3 \n" 
+                                              "4 x x 8 x 3 x x 1 \n" 
+                                              "7 x x x 2 x x x 6 \n" 
+                                              "x 6 x x x x 2 8 x \n" 
+                                              "x x x 4 1 9 x x 5 \n" 
+                                              "x x x x 8 x x 7 9 \n" )
+
+
 if __name__ == '__main__':
     unittest.main()
