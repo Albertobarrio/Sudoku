@@ -13,7 +13,7 @@ class IncorrectNumber(Exception):
 class Interface():
     def __init__(self):
         self.sudoku = Sudoku("534678912672195348198342567859761423426853791713924856961537284287419635345286x79")
-    
+         
     def validate_input_number(self, number, position_x, position_y):
         
         if number.isalpha() or position_x.isalpha() or position_y.isalpha(): 
@@ -53,11 +53,7 @@ class Interface():
         except IncorrectNumber:
             print("Ha ingresado incorrecto, debe ingresar un numero entre 1 y 9")
             self.play_sudoku()
-
-        # except TypeError:
-            # print("Ha ingresado una letra")
-            # self.play_sudoku()     
-        
+ 
         except ValueError:
             print("Ha ingresado una letra")
             self.play_sudoku()
