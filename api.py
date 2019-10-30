@@ -1,7 +1,4 @@
-
 import requests
-
-#TODO: Conectar api con Interface y hacer lost est de la api
 
 class Api():
     
@@ -23,5 +20,6 @@ class Api():
                 board += "x"
         return board   
 
-api= Api()
-print(api.make_board())
+
+
+    

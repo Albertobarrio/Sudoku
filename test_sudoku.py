@@ -1,6 +1,6 @@
 import unittest
 
-from Sudoku import (
+from sudoku import (
     Sudoku,
     InvalidPosition,
     InvalidColumn,
