@@ -22,11 +22,14 @@ class Sudoku():
         self.is_position_fixed(self.original_board)
 
     def is_position_fixed(self, original_board):
+        # Funcionalidad: Guarda en una lista las posiciones fijas
         for position, number in enumerate(self.original_board):
             if number != 'x':
                 self.position_fixed.append(position)
 
     def number_in_column(self, lineal_position):
+        # Funcionalidad: Guarda en una lista los numeros en la
+        # columna a partir de una posicion dada
         column = []
         lineal_position = lineal_position % 9
         while lineal_position <= 80:
@@ -35,6 +38,8 @@ class Sudoku():
         return column
 
     def number_in_row(self, lineal_position):
+        # Funcionalidad: Guarda en una lista los numeros en la
+        # fila a partir de una posicion dada
         column = []
         lineal_position = (lineal_position // 9)*9
         for _ in range(9):
@@ -43,6 +48,8 @@ class Sudoku():
         return column
 
     def number_in_region(self, position_x, position_y):
+        # Funcionalidad: Guarda en una lista los numeros en la
+        # region a partir de una posicion dada
         region = []
         reg_x_init = position_x // 3
         reg_y_init = position_y // 3
@@ -53,6 +60,8 @@ class Sudoku():
         return region
 
     def put_number(self, position_x, position_y, number):
+        # Funcionalidad: Cola el numero en la posicion indicada
+        # y si hay un error se llama a una eecepcion correspondiente
         lineal_position = (position_x * 9) + position_y
         if lineal_position in self.position_fixed:
             raise InvalidPosition()
@@ -65,14 +74,16 @@ class Sudoku():
         else:
             self.original_board[lineal_position] = str(number)
             return True
-        
+
     def print_board(self):
-        board=""
-        for i in range(0,9):
-            for j in range(0,9):
+        # Funcionalidad: Imprime el tablero del sudoku
+        board = ""
+        for i in range(0, 9):
+            for j in range(0, 9):
                 board += self.original_board[(i*9)+j] + " "
-            board+="\n"
+            board += "\n"
         return board
-    
+
     def is_over(self):
+        # Funcionalidad: Indica si el juego a terminado o no
         return 'x' not in self.original_board
