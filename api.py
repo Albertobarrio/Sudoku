@@ -4,6 +4,8 @@ import requests
 class Api():
 
     def positions_fixed(self):
+        # Funcionalidad: Genera un dicionario con las posiciones fijas y 
+        # el numero correspondiente
         positionfixed = {}
         resp = requests.get(
             'http://www.cs.utep.edu/cheon/ws/sudoku/new/?level=1&size=9')
@@ -14,6 +16,8 @@ class Api():
         return positionfixed
 
     def make_board(self):
+        # Funcionalidad: Genera el tablero como un string agregando
+        # x a las posiciones vacias
         board = ""
         positionfixed = self.positions_fixed()
         for i in range(81):

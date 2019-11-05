@@ -15,30 +15,30 @@ class TestSudoku(unittest.TestCase):
         sudoku = Sudoku(
             "53xx7xxxx6xx195xxxx98xxxx6x8xxx6xxx34xx8x3xx17xxx2xxx6x6xxxx28xxxx419xx5xxxx8xx79")
         with self.assertRaises(InvalidPosition):
-            sudoku.put_number(0, 0, 6)  
+            sudoku.put_number(0, 0, 6)
 
     def test_put_number_invalid_column(self):
         sudoku = Sudoku(
             "53xx7xxxx6xx195xxxx98xxxx6x8xxx6xxx34xx8x3xx17xxx2xxx6x6xxxx28xxxx419xx5xxxx8xx79")
         with self.assertRaises(InvalidColumn):
-            sudoku.put_number(2, 0, 5)  
+            sudoku.put_number(2, 0, 5)
 
     def test_put_number_invalid_row(self):
         sudoku = Sudoku(
             "53xx7xxxx6xx195xxxx98xxxx6x8xxx6xxx34xx8x3xx17xxx2xxx6x6xxxx28xxxx419xx5xxxx8xx79")
         with self.assertRaises(InvalidRow):
-            sudoku.put_number(0, 3, 7)  
+            sudoku.put_number(0, 3, 7)
 
     def test_put_number_invalid_region(self):
         sudoku = Sudoku(
             "53xx7xxxx6xx195xxxx98xxxx6x8xxx6xxx34xx8x3xx17xxx2xxx6x6xxxx28xxxx419xx5xxxx8xx79")
         with self.assertRaises(InvalidRegion):
-            sudoku.put_number(4, 1, 7)  
+            sudoku.put_number(4, 1, 7)
 
     def test_put_number_ok(self):
         sudoku = Sudoku(
             "53xx7xxxx6xx195xxxx98xxxx6x8xxx6xxx34xx8x3xx17xxx2xxx6x6xxxx28xxxx419xx5xxxx8xx79")
-        self.assertTrue(sudoku.put_number(0, 2, 4))  
+        self.assertTrue(sudoku.put_number(0, 2, 4))
 
     def test_game_not_over(self):
         sudoku = Sudoku(
