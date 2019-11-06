@@ -4,7 +4,7 @@ import requests
 class Api():
 
     def positions_fixed(self):
-        # Funcionalidad: Genera un dicionario con las posiciones fijas y 
+        # Funcionalidad: Genera un dicionario con las posiciones fijas y
         # el numero correspondiente
         positionfixed = {}
         resp = requests.get(

@@ -1,6 +1,6 @@
 FROM python:3
 
-RUN git clone https://github.com/Albertobarrio/Sudoku.git 
+RUN git clone https://github.com/Albertobarrio/Sudoku.git && pip install requests && pip install parameterized
 
 WORKDIR /Sudoku
 
